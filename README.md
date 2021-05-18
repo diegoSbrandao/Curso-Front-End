@@ -5,8 +5,8 @@
   
   
 Status: Duração: 108 horas;
-        Início: 28/03/2021;
-        Término: 16/06/2021 (Em curso)
+        </br>Início: 28/03/2021, 
+        Término: 16/06/2021 (Em curso).
   
 
   
