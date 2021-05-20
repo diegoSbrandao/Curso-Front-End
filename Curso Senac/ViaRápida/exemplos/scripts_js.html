@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="form-group col-12">
+                <button class="btn btn-success"
+                        onclick="alert('Olá mundo')">Olá mundo</button>
+            </div>
+            <div class="form-group col-12">
+                <button class="btn btn-secondary"
+                        id="btnTrocar"
+                        onclick="trocarTexto()">Trocar Texto</button>
+            </div>
+            <div class="form-group col-12">
+                <button class="btn btn-warning" id="btnBotao1"
+                        onclick="trocarTexto1()">
+                    Botão 1
+                </button>
+                <button class="btn btn-danger" id="btnBotao2"
+                        onclick="trocarTexto1()">
+                    Botão 2
+                </button>
+            </div>
+            <div class="form-group col-12">
+                <img src="../imagens/logo_senac.png" alt="" 
+                    id="imgSenac">
+                <button class="btn btn-primary" onclick="trocarImg()">
+                    Trocar imagem
+                </button>
+            </div>
+            <div class="form-group col-6">
+                <input type="text" class="form-control" 
+                    id="txtCampo1"
+                    onkeyup="duplicarTexto()"
+                    placeholder="Digite algo aqui">
+            </div>
+            <div class="form-group col-6">
+                <input type="text" class="form-control" id="txtCampo2">
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function trocarTexto(){        
+        document.getElementById("btnTrocar").innerHTML = "Texto trocado";
+    }
+    function trocarTexto1(){
+        //Criar uma variável auxiliar para guardar o que tem no botao1        
+        var vAux = document.getElementById('btnBotao1').innerHTML;
+
+        //Colocamos o texto do botão 2, dentro do botão 1
+        document.getElementById("btnBotao1").innerHTML =
+            document.getElementById("btnBotao2").innerHTML;
+        
+        //colocar o conteúdo da variável aux, dentro do botão 2
+        document.getElementById('btnBotao2').innerHTML = vAux;        
+    }
+    function trocarImg(){
+        document.getElementById("imgSenac").src = "../imagens/senac.jpg";
+    }
+    function duplicarTexto(){
+        document.getElementById('txtCampo2').value =
+            document.getElementById('txtCampo1').value;
+    }
+</script>
+</html>
