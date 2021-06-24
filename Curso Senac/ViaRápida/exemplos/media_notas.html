@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Média notas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container-fluid mt-3">
+        <div class="row">
+            <div class="form-group col-12">
+                <input type="text" class="form-control" id="txtNota1" placeholder="Digite a primeira nota">
+            </div>
+            <div class="form-group col-12">
+                <input type="text" class="form-control" id="txtNota2" placeholder="Digite a segunda nota">
+            </div>
+            <div class="form-group col-12">
+                <input type="text" class="form-control" id="txtNota3" placeholder="Digite a terceira nota">
+            </div>
+            <div class="form-group col-12">
+                <button class="btn btn-primary btn-block"
+                        onclick="calcularMedia()">Calcular média</button>
+            </div>
+            <div class="form-group col-12">
+                <input type="text" class="form-control" id="txtResultado" >
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function calcularMedia(){
+        /*
+            < 5 - Reprovado
+            >=5 e < 7 Recuperação
+            >= 7 Aprovado
+        */
+        //capturamos os valores das 3 notas e colocamos em variáveis
+        var vNota1 = parseFloat(document.getElementById('txtNota1').value);        
+        var vNota2 = parseFloat(document.getElementById('txtNota2').value);
+        var vNota3 = parseFloat(document.getElementById('txtNota3').value);
+
+        //colocamos a soma das 3 notas em uma variável
+        var vSoma = vNota1 + vNota2 + vNota3;
+
+        //Dividimos por 3, para obter a média
+        var vMedia = vSoma / 3;
+
+        if (vMedia < 5){
+           //colocamos o resultado dentro do input
+            document.getElementById('txtResultado').value = vMedia + " Reprovado"; 
+        }
+
+        
+    }
+</script>
+</html>

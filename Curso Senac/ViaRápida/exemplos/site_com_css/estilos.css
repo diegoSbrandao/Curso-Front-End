@@ -1,0 +1,14 @@
+body{
+    background-color: yellow;
+}
+a{
+    font-size: 30px;
+    font-family: 'Courier New', Courier, monospace;
+}
+.titulo{
+    color: red;
+    background-color: blue;
+}
+input{
+   height: 50px;    
+}

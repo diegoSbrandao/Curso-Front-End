@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Média de Notas</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="form-group col-12 text-center">
+                <h2>Sistema para cálculo de média</h2>
+            </div>
+            <div class="form-group col-12">
+                <label for="txtNota1">Primeira Nota</label>
+                <input type="text" class="form-control" id="txtNota1">
+            </div>
+            <div class="form-group col-12">
+                <label for="txtNota2">Segunda Nota</label>
+                <input type="text" class="form-control" id="txtNota2">
+            </div>
+            <div class="form-group col-12">
+                <label for="txtNota3">Terceira Nota</label>
+                <input type="text" class="form-control" id="txtNota3">
+            </div>
+            <div class="form-group col-12">
+                <button onclick="CalcularMedia()" class="btn btn-primary">Calcular</button>
+            </div>
+            <div class="form-group col-12 text-center">
+                <h4 id="h4Resultado">Resultado</h4>
+                <img id="imgResultado" src="" alt="" style="height: 100px;">
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function CalcularMedia(){
+         /*
+            < 5 - Reprovado
+            >=5 e < 7 Recuperação
+            >= 7 Aprovado
+        */
+        var vNota1 = parseFloat(document.getElementById('txtNota1').value);
+        var vNota2 = parseFloat(document.getElementById('txtNota2').value);
+        var vNota3 = parseFloat(document.getElementById('txtNota3').value);
+
+        var vMedia = ((vNota1 + vNota2 + vNota3) / 3).toFixed(2);
+
+        if (vMedia == 12){
+            document.getElementById('h4Resultado').innerHTML = vMedia + " Nome dele";
+            document.getElementById('imgResultado').src = '../imagens/reprovado.jpg';
+        } else if (vMedia >= 7){
+            document.getElementById('h4Resultado').innerHTML = vMedia + " Aprovado";
+            document.getElementById('imgResultado').src = '../imagens/aprovado.png';
+        } else {
+            document.getElementById('h4Resultado').innerHTML = vMedia + " Recuperação";
+            document.getElementById('imgResultado').src = '../imagens/recuperacao.jpg';
+        }
+    }
+</script>
+</html>

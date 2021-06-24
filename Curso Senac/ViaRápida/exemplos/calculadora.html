@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="form-group col-12" style="margin-top: 10px;">
+                <input type="text" class="form-control" id="txtDisplay">
+            </div>
+            <div class="form-group col-3">
+                <button class="btn btn-primary btn-block" onclick="addDigito(7)">7</button>
+            </div>
+            <div class="form-group col-3">
+                <button class="btn btn-primary btn-block" onclick="addDigito(8)">8</button>
+            </div>
+            <div class="form-group col-3">
+                <button class="btn btn-primary btn-block" onclick="addDigito(9)">9</button>
+            </div>
+            <div class="form-group col-3">
+                <button class="btn btn-secondary btn-block" onclick="novaOperacao('*')">*</button>
+            </div>
+            <div class="form-group col-3">
+                <button class="btn btn-primary btn-block" onclick="addDigito(4)">4</button>
+            </div>
+            <div class="form-group col-3">
+                <button class="btn btn-primary btn-block" onclick="addDigito(5)">5</button>
+            </div>
+            <div class="form-group col-3">
+                <button class="btn btn-primary btn-block" onclick="addDigito(6)">6</button>
+            </div>
+            <div class="form-group col-3">
+                <button class="btn btn-secondary btn-block" onclick="novaOperacao('-')">-</button>
+            </div>
+            <div class="form-group col-3">
+                <button class="btn btn-primary btn-block" onclick="addDigito(1)">1</button>
+            </div>
+            <div class="form-group col-3">
+                <button class="btn btn-primary btn-block" onclick="addDigito(2)">2</button>
+            </div>
+            <div class="form-group col-3">
+                <button class="btn btn-primary btn-block" onclick="addDigito(3)">3</button>
+            </div>
+            <div class="form-group col-3">
+                <button class="btn btn-secondary btn-block" onclick="novaOperacao('+')">+</button>
+            </div>
+            <div class="form-group col-3">
+                <button class="btn btn-primary btn-block" onclick="addDigito(0)">0</button>
+            </div>
+            <div class="form-group col-6">
+                <button class="btn btn-primary btn-block" onclick="addDigito(',')">,</button>
+            </div>            
+            <div class="form-group col-3">
+                <button class="btn btn-secondary btn-block" onclick="novaOperacao('/')">/</button>
+            </div>            
+            <div class="form-group col-6">
+                <button class="btn btn-warning btn-block" onclick="limparDisplay()">CE</button>
+            </div>
+            <div class="form-group col-6">
+                <button class="btn btn-dark btn-block"
+                        onclick="resultado()">=</button>
+            </div>
+            <div class="form-group col-12">
+                <a class="btn" href="./pasta1/chat2.html">Ir para outra pasta</a>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    //criar variável para uso global, em qualquer função
+    var vNumero1;
+    var vOperacao;
+
+    function addDigito(numero) {
+        document.getElementById('txtDisplay').value += numero;
+    }
+    function limparDisplay() {
+        document.getElementById('txtDisplay').value = '';
+    }
+    function novaOperacao(operacao) {
+        vNumero1 = parseFloat(document.getElementById('txtDisplay').value);
+        vOperacao = operacao;
+        limparDisplay();
+    }
+    function resultado(){
+        //Capturamos o numero2 que está no display
+        var vNumero2 = parseFloat(document.getElementById('txtDisplay').value);
+        
+        //verificar o conteúdo da variável vOperacao
+        if (vOperacao == '*'){
+            document.getElementById('txtDisplay').value = vNumero1 * vNumero2;
+        }
+        if (vOperacao == '-'){
+            document.getElementById('txtDisplay').value = vNumero1 - vNumero2;
+        }
+        if (vOperacao == '+'){
+            document.getElementById('txtDisplay').value = vNumero1 + vNumero2;
+        }
+        if (vOperacao == '/'){
+            document.getElementById('txtDisplay').value = vNumero1 / vNumero2;
+        }
+    }
+</script>
+
+</html>

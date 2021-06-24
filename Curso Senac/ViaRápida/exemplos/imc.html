@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo do IMC</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2>Sistema para cálculo do IMC (Indice de Massa Corporal)</h2>
+            </div>
+            <div class="col-12 form-group">
+                <label for="txtAltura">Altura</label>
+                <input type="text" id="txtAltura" class="form-control">
+            </div>
+            <div class="col-12 form-group">
+                <label for="txtPeso">Peso</label>
+                <input type="text" id="txtPeso" class="form-control">
+            </div>
+            <div class="col-12 form-group">
+                <button class="btn btn-primary" onclick="Calcular()">Calcular</button>
+            </div>
+            <div class="col-12 form-group text-center">
+                <h4 id="h4Resultado">Resultado</h4>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    /*
+        < 18.5      - Abaixo do peso
+        18.5 - 24.9 - Peso normal
+        25   - 29.9 - Sobrepeso
+        30   - 34.9 - Obesidade Grau I
+        35   - 39.9 - Obesidade Grau II
+        >= 40       - Obesidade Grau III
+    */
+    function Calcular(){
+        //pegar a aultura e o peso, calcular o IMC, mostrar o 
+        //resultado dentro do H4
+        var vPeso = parseFloat(document.getElementById('txtPeso').value);
+        var vAltura = parseFloat(document.getElementById('txtAltura').value);
+        var vIMC = vPeso / (vAltura * vAltura);
+        vIMC = vIMC.toFixed(1);
+
+        if (vIMC < 18.5){
+            document.getElementById('h4Resultado').innerHTML = vIMC + " - Abaixo do peso";
+        } 
+        else if (vIMC >= 18.5 && vIMC < 25){
+            document.getElementById('h4Resultado').innerHTML = vIMC + " - Peso normal";
+        }
+        else if (vIMC >= 25 && vIMC < 30) {
+            document.getElementById('h4Resultado').innerHTML = vIMC + " - Sobrepeso";
+        }
+        else if (vIMC >= 30 && vIMC < 35){
+            document.getElementById('h4Resultado').innerHTML = vIMC + " - Obesidade Grau I";
+        }
+        else if (vIMC >= 35 && vIMC < 40){
+            document.getElementById('h4Resultado').innerHTML = vIMC + " - Obesidade Grau II";
+        }
+        else {
+            document.getElementById('h4Resultado').innerHTML = vIMC + " - Obesidade Grau III";
+        }
+    }
+</script>
+</html>

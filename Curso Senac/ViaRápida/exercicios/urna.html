@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eleições 2022</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-8" style="border: 30px solid gray;">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 col-md-10">
+                            <h2 id="h2Candidato" class="text-center mt-3">Presidente</h2>
+                            <h2 id="h2Digitos" style=" margin-top: 100px; 
+                                  font-family: 'Courier New', Courier, monospace; 
+                                  font-weight: bold; font-size: 80px;"></h2>
+                            <h2 id="h2Dados" class="text-center mt-3" 
+                                style="margin-top: 50px;">Nome e Partido</h2>
+                        </div>  
+                        <div class="col-12 col-md-2">
+                            <audio id="myAudio">
+                                <source src="fim.mp3" type="audio/mpeg">
+                            </audio>
+                            <img id="imgCandidato" src="imagens/candidato0.png" alt="" 
+                            class="mt-3"
+                            style="width: 100%;">
+                        </div>                       
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4" style="border: 30px solid gray;">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <img src="imagens/logo_je.png" 
+                            alt="" style="height: 100px; margin-bottom: 30px;">
+                            <button class="btn btn-primary" onclick="apurar()">Apurar</button>
+                        </div>
+                        <div class="col-4 mb-3">
+                            <button class="btn btn-block btn-dark" onclick="addDigito(1)">1</button>
+                        </div>
+                        <div class="col-4 mb-3">
+                            <button class="btn btn-block btn-dark" onclick="addDigito(2)">2</button>
+                        </div>
+                        <div class="col-4 mb-3">
+                            <button class="btn btn-block btn-dark" onclick="addDigito(3)">3</button>
+                        </div>
+                        <div class="col-4 mb-3">
+                            <button class="btn btn-block btn-dark" onclick="addDigito(4)">4</button>
+                        </div>
+                        <div class="col-4 mb-3">
+                            <button class="btn btn-block btn-dark" onclick="addDigito(5)">5</button>
+                        </div>
+                        <div class="col-4 mb-3">
+                            <button class="btn btn-block btn-dark" onclick="addDigito(6)">6</button>
+                        </div>
+                        <div class="col-4 mb-3">
+                            <button class="btn btn-block btn-dark" onclick="addDigito(7)">7</button>
+                        </div>
+                        <div class="col-4 mb-3">
+                            <button class="btn btn-block btn-dark" onclick="addDigito(8)">8</button>
+                        </div>
+                        <div class="col-4 mb-3">
+                            <button class="btn btn-block btn-dark" onclick="addDigito(9)">9</button>
+                        </div>
+                        <div class="col-4 mb-3">
+                            
+                        </div>
+                        <div class="col-4 mb-3">
+                            <button class="btn btn-block btn-dark" onclick="addDigito(0)">0</button>
+                        </div>
+                        <div class="col-4 mb-3">
+                            
+                        </div>
+                        <div class="col-6 col-md-4 mb-3">
+                            <button class="btn btn-block btn-light" onclick="branco()">BRANCO</button>
+                        </div>
+                        <div class="col-6 col-md-4 mb-3">
+                            <button class="btn btn-block btn-warning" onclick="corrige()">CORRIGE</button>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                            <button class="btn btn-block btn-success" onclick="confirma()">CONFIRMA</button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var vCandidato11 = 0;
+    var vCandidato22 = 0;
+    var vCandidato33 = 0;
+    var vBranco = 0;
+
+    function addDigito(numero){
+        document.getElementById('h2Digitos').innerHTML += numero;
+        if (document.getElementById('h2Digitos').innerHTML == '11'){
+            document.getElementById('h2Dados').innerHTML = 'Chaves - SBT';
+            document.getElementById('imgCandidato').src = 'imagens/candidato11.jpg';
+        } else if (document.getElementById('h2Digitos').innerHTML == '22'){
+            document.getElementById('h2Dados').innerHTML = 'Pica-Pau - MADEIRA';
+            document.getElementById('imgCandidato').src = 'imagens/candidato22.jpg';
+        } else if (document.getElementById('h2Digitos').innerHTML == '33'){
+            document.getElementById('h2Dados').innerHTML = 'Lord Vader - STAR';
+            document.getElementById('imgCandidato').src = 'imagens/candidato33.jpg';
+        }
+    }
+    function limparTela(){
+        document.getElementById('h2Digitos').innerHTML = '';
+    }
+    function branco(){
+        limparTela();
+        document.getElementById('h2Dados').innerHTML = "BRANCO";
+    }
+    function corrige(){
+        limparTela();
+        document.getElementById('h2Candidato').innerHTML = "Presidente";
+        document.getElementById('h2Dados').innerHTML = "Nome e Partido";
+        document.getElementById('imgCandidato').src = 'imagens/candidato0.png';
+    }
+    function confirma(){
+        if (document.getElementById('h2Digitos').innerHTML == '11'){
+            vCandidato11 += 1;
+        } else if (document.getElementById('h2Digitos').innerHTML == '22'){
+            vCandidato22 += 1;
+        } else if (document.getElementById('h2Digitos').innerHTML == '33'){
+            vCandidato33 += 1;
+        } else if (document.getElementById('h2Digitos').innerHTML == ''){
+            vBranco += 1;
+        }
+        document.getElementById('h2Candidato').innerHTML = '';
+        document.getElementById('h2Digitos').innerHTML = 'FIM';
+        document.getElementById('h2Dados').innerHTML = '';
+        document.getElementById('imgCandidato').src = '';
+
+        document.getElementById("myAudio").play();
+
+        setTimeout(function(){ corrige(); }, 5000);
+    }
+    function apurar(){
+        document.getElementById('h2Candidato').innerHTML = 
+            'APURAÇÃO<br><br>11 - Chaves (' + vCandidato11 + ')<br>' + 
+            '22 - Pica-Pau (' + vCandidato22 + ')<br>' +
+            '33 - Lord Vader (' + vCandidato33 + ')<br>' +
+            'Branco (' + vBranco + ')';
+        if (vCandidato11 > vCandidato22 && vCandidato11 > vCandidato33){
+            document.getElementById('h2Digitos').innerHTML = 'Chaves';
+        } else if (vCandidato22 > vCandidato11 && vCandidato22 > vCandidato33){
+            document.getElementById('h2Digitos').innerHTML = 'Pica-Pau';
+        } else if (vCandidato33 > vCandidato11 && vCandidato33 > vCandidato22){
+            document.getElementById('h2Digitos').innerHTML = 'Lord Vader';
+        } else if (vCandidato11 == vCandidato22 && vCandidato11 == vCandidato33){
+            document.getElementById('h2Digitos').innerHTML = 'Empate geral';
+        } else if (vCandidato11 == vCandidato22){
+            document.getElementById('h2Digitos').innerHTML = 'Empate 11 e 22';
+        } else if (vCandidato11 == vCandidato33){
+            document.getElementById('h2Digitos').innerHTML = 'Empate 11 e 33';
+        } else {
+            document.getElementById('h2Digitos').innerHTML = 'Empate 22 e 33';
+        }
+        
+        document.getElementById('h2Dados').innerHTML = '';
+        document.getElementById('imgCandidato').src = '';
+    }
+</script>
+</html>
